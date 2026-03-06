@@ -145,7 +145,7 @@ export const dummyProducts = [
       "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=1000&auto=format&fit=crop",
     ],
     sizes: ["One Size"],
-    category: "Bags",
+    category: "Bag",
     stock: 9,
     isFeatured: false,
     isActive: true,

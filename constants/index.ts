@@ -19,7 +19,7 @@ export const CATEGORIES: {
   { id: 3, name: "Kids", icon: "happy-outline" },
   { id: 4, name: "Shoes", icon: "footsteps-outline" },
   { id: 5, name: "Bag", icon: "briefcase-outline" },
-  // { id: 6, name: "Other", icon: "grid-outline" },
+  // { id: 6, name: "all", icon: "grid-outline" },
 ];
 
 export const PROFILE_MENU = [

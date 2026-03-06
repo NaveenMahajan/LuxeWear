@@ -28,7 +28,7 @@ export default function Categories() {
                     <TouchableOpacity key={item.id} style={styles.categoryItem} onPress={() => router.push({
                         pathname: '/categories_list',
                         params: {
-                            categoryId: item.id
+                            categoriesId: item.name
                         }
 
                     })}>

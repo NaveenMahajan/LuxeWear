@@ -1,3 +1,4 @@
+import Header from '@/Components/HomeScreen/Header'
 import { useWishlist } from '@/Hooks/ContextApi/WishlistContext'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
@@ -20,8 +21,9 @@ export default function Favorites() {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
 
-            <View style={styles.header}>
-                <Text style={styles.title}>Favorites</Text>
+            <View style={{ padding: 5 }}>
+
+                <Header title='Favorites' showBack />
             </View>
 
             {wishlist.length > 0 ? (
@@ -114,11 +116,7 @@ export default function Favorites() {
 
 const styles = StyleSheet.create({
 
-    header: {
-        padding: 16,
-        borderBottomWidth: 1,
-        borderColor: "#eee"
-    },
+
 
     title: {
         fontSize: 20,
