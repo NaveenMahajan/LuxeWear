@@ -1,6 +1,9 @@
+
 import { dummyProducts } from '@/assets/assets'
 import { Product } from '@/constants/types'
+import { useWishlist } from '@/Hooks/ContextApi/WishlistContext'
 import { Ionicons } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import React, { useEffect, useState } from 'react'
 import {
     ActivityIndicator,
@@ -14,14 +17,8 @@ import {
 export default function PopularProduct() {
     const [products, setProducts] = useState<Product[]>([])
     const [loading, setLoading] = useState(false)
-    const [likedProducts, setLikedProducts] = useState<Record<string, boolean>>({})
-
-    const handleLike = (productId: string) => {
-        setLikedProducts((prev) => ({
-            ...prev,
-            [productId]: !prev[productId],
-        }))
-    }
+    const router = useRouter()
+    const { toggleWishlist, isInWishlist } = useWishlist()
 
     const fetchProducts = async () => {
         setLoading(true)
@@ -53,44 +50,54 @@ export default function PopularProduct() {
                 {loading ? (
                     <ActivityIndicator size="large" color="#000" />
                 ) : (
-                    products.slice(0, 6).map((product) => (
-                        <View key={product._id} style={styles.productCard}>
+                    products.slice(0, 8).map((product) => {
+                        const isLiked = isInWishlist(product._id)
 
-                            <View style={styles.imageContainer}>
-                                <Image
-                                    source={{ uri: product.images[0] }}
-                                    style={styles.productImage}
-                                />
+                        return (
+                            <TouchableOpacity key={product._id} style={styles.productCard} onPress={() => router.push({
+                                pathname: '/Products/ProductDetails',
+                                params: {
+                                    productId: product._id
+                                }
+                            })}>
 
-                                <TouchableOpacity
-                                    style={styles.heartIcon}
-                                    onPress={() => handleLike(product._id)}
-                                >
-                                    <Ionicons
-                                        name={likedProducts[product._id] ? 'heart' : 'heart-outline'}
-                                        size={20}
-                                        color={likedProducts[product._id] ? '#ff0000' : '#ccc'}
+                                <View style={styles.imageContainer}>
+                                    <Image
+                                        source={{ uri: product.images[0] }}
+                                        style={styles.productImage}
                                     />
-                                </TouchableOpacity>
-                            </View>
 
-                            {/* Rating */}
-                            <View style={styles.ratingContainer}>
-                                <Text>{product.ratings.average}</Text>
-                                <Ionicons name="star" size={16} color="#FFD700" />
-                            </View>
+                                    <TouchableOpacity
+                                        style={styles.heartIcon}
+                                        onPress={() => toggleWishlist(product)}
+                                    >
+                                        <Ionicons
+                                            name={isLiked ? 'heart' : 'heart-outline'}
+                                            size={20}
+                                            color={isLiked ? '#ff0000' : '#ccc'}
+                                        />
+                                    </TouchableOpacity>
+                                </View>
 
-                            {/* Product Name */}
-                            <Text style={styles.productName} numberOfLines={1}>
-                                {product.name}
-                            </Text>
+                                {/* Rating */}
+                                <View style={styles.ratingContainer}>
+                                    <Text>{product.ratings.average}</Text>
+                                    <Ionicons name="star" size={16} color="#FFD700" />
+                                </View>
 
-                            {/* Price */}
-                            <Text style={styles.price}>
-                                ${product.price.toFixed(2)}
-                            </Text>
-                        </View>
-                    ))
+                                {/* Product Name */}
+                                <Text style={styles.productName} numberOfLines={1}>
+                                    {product.name}
+                                </Text>
+
+                                {/* Price */}
+                                <Text style={styles.price}>
+                                    ${product.price.toFixed(2)}
+                                </Text>
+
+                            </TouchableOpacity>
+                        )
+                    })
                 )}
             </View>
 
