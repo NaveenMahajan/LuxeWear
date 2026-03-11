@@ -92,6 +92,12 @@ export default function CartProvider({ children }: { children: ReactNode }) {
         quantity: number,
         size: string
     ) => {
+
+        if (quantity <= 0) {
+            removeFromCart(productId, size);
+            return;
+        }
+
         setCartItems((prev) =>
             prev.map((item) =>
                 item.productId === productId && item.size === size

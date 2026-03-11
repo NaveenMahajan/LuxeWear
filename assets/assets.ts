@@ -1225,15 +1225,15 @@ export const dummyAddress = [
 
 export const dummyUser = {
   _id: "69819801a872c913f84d13f4",
-  name: "John Doe",
-  email: "john@example.com",
-  firstName: "John",
-  lastName: "Doe",
+  name: "Naveen MMahajan",
+  email: "naveenmahajan@example.com",
+  firstName: "Naveen",
+  lastName: "Mahajan",
   imageUrl:
     "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=240",
   emailAddresses: [
     {
-      emailAddress: "john@example.com",
+      emailAddress: "naveenmahajan@example.com",
     },
   ],
   clerkId: "user_396E235",

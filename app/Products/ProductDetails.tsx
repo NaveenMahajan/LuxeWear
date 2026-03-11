@@ -193,6 +193,7 @@ export default function ProductDetails() {
                 <TouchableOpacity style={styles.cartIconButton} onPress={() => router.push("/(tabs)/cart")}>
                     <Ionicons name="cart-outline" size={26} color="#000" />
 
+
                     {itemCount > 0 && (
                         <View style={styles.cartBadge}>
                             <Text style={styles.cartBadgeText}>{itemCount}</Text>

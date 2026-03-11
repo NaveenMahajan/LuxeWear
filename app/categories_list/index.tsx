@@ -9,6 +9,7 @@ import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react
 export default function CategoriesList() {
 
     const { categoriesId } = useLocalSearchParams<{ categoriesId: string }>();
+    const [refreshing, setRefreshing] = useState(false);
     const router = useRouter();
 
     const filteredCategories = CATEGORIES.filter(
@@ -24,6 +25,13 @@ export default function CategoriesList() {
         setData(filteredProducts);
     };
 
+
+    const Refreshhandler = () => {
+        setRefreshing(true);
+
+
+        setRefreshing(false);
+    }
     useEffect(() => {
         fetchData();
     }, [categoriesId]);
@@ -77,7 +85,7 @@ export default function CategoriesList() {
 
             <View style={styles.headerBackground} />
 
-            <View style={styles.header}>
+            <View style={styles.header} >
                 <TouchableOpacity onPress={() => router.back()}>
                     <Ionicons name="arrow-back" size={26} color="#000" />
                 </TouchableOpacity>
@@ -93,6 +101,7 @@ export default function CategoriesList() {
                 keyExtractor={(item) => item._id}
                 numColumns={2}
                 contentContainerStyle={styles.list}
+                refreshing={refreshing} onRefresh={Refreshhandler}
             />
 
         </View>

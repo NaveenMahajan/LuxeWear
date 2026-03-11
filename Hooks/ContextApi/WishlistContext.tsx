@@ -1,11 +1,11 @@
 import { dummyWishlist } from "@/assets/assets";
 import { Product, WishlistContextType } from "@/constants/types";
-import { createContext, useContext, ReactNode, useState, useEffect } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
 
-export default function WishlistProvider({ children }: { children: ReactNode }){
+export default function WishlistProvider({ children }: { children: ReactNode }) {
 
     const [wishlist, setWishlist] = useState<Product[]>([]);
     const [loading, setLoading] = useState(false);
@@ -14,7 +14,7 @@ export default function WishlistProvider({ children }: { children: ReactNode }){
         setWishlist(dummyWishlist)
         setLoading(false);
     }
-    const toggleWishlist = async(product: Product) => {
+    const toggleWishlist = async (product: Product) => {
         const exists = wishlist.some((item) => item._id === product._id);
         setWishlist((prev) => {
             if (exists) {
@@ -23,7 +23,7 @@ export default function WishlistProvider({ children }: { children: ReactNode }){
             return [...prev, product]
         })
     }
-        const isInWishlist = (productId: string) => {
+    const isInWishlist = (productId: string) => {
         return wishlist.some((item) => item._id === productId);
     }
 
@@ -32,14 +32,10 @@ export default function WishlistProvider({ children }: { children: ReactNode }){
     }, [])
 
 
-  
-    useEffect(() => {
-        featchWishlist();
-    }, [])
 
 
     return (
-        <WishlistContext.Provider value={{ wishlist, loading,isInWishlist, toggleWishlist }}>
+        <WishlistContext.Provider value={{ wishlist, loading, isInWishlist, toggleWishlist }}>
             {children}
         </WishlistContext.Provider>
     )

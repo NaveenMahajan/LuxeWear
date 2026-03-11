@@ -23,7 +23,7 @@ export const CATEGORIES: {
 ];
 
 export const PROFILE_MENU = [
-  { id: 1, title: "My Orders", icon: "receipt-outline", route: "/orders" },
+  { id: 1, title: "My Orders", icon: "receipt-outline", route: "/(tabs)/cart" },
   {
     id: 2,
     title: "Shipping Addresses",

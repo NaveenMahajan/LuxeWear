@@ -55,18 +55,26 @@ export default function Cart() {
                                         Size: {item.size}
                                     </Text>
 
+                                    <Text style={styles.subtotal}>
+                                        Subtotal: ${(item.price * item.quantity).toFixed(2)}
+                                    </Text>
+
                                     {/* Quantity Controls */}
                                     <View style={styles.quantityRow}>
 
                                         <TouchableOpacity
                                             style={styles.qtyButton}
-                                            onPress={() =>
-                                                updateQuantity(
-                                                    item.productId,
-                                                    item.quantity - 1,
-                                                    item.size
-                                                )
-                                            }
+                                            onPress={() => {
+                                                if (item.quantity > 1) {
+                                                    updateQuantity(
+                                                        item.productId,
+                                                        item.quantity - 1,
+                                                        item.size
+                                                    )
+                                                } else {
+                                                    removeFromCart(item.productId, item.size)
+                                                }
+                                            }}
                                         >
                                             <Ionicons name="remove" size={18} color="#000" />
                                         </TouchableOpacity>
@@ -130,10 +138,14 @@ export default function Cart() {
 
                 <View style={styles.emptyContainer}>
 
-                    <Ionicons name="cart-outline" size={80} color="#ccc" />
+                    <Ionicons name="cart-outline" size={90} color="#ccc" />
 
-                    <Text style={styles.emptyText}>
-                        Your cart is empty
+                    <Text style={styles.emptyTitle}>
+                        Your LuxeWear Cart is Empty
+                    </Text>
+
+                    <Text style={styles.emptySubtitle}>
+                        Looks like you haven't added anything yet
                     </Text>
 
                     <TouchableOpacity
@@ -164,9 +176,9 @@ const styles = StyleSheet.create({
     },
 
     productImage: {
-        width: 70,
-        height: 70,
-        borderRadius: 8,
+        width: 75,
+        height: 75,
+        borderRadius: 10,
         marginRight: 12
     },
 
@@ -187,26 +199,32 @@ const styles = StyleSheet.create({
         color: "#666"
     },
 
+    subtotal: {
+        fontSize: 12,
+        marginTop: 2,
+        color: "#999"
+    },
+
     quantityRow: {
         flexDirection: "row",
         alignItems: "center",
-        marginTop: 8
+        marginTop: 10
     },
 
     qtyButton: {
-        borderWidth: 1,
-        borderColor: "#ddd",
+        backgroundColor: "#f2f2f2",
         padding: 6,
         borderRadius: 6
     },
 
     qtyText: {
         marginHorizontal: 10,
-        fontSize: 16
+        fontSize: 16,
+        fontWeight: "600"
     },
 
     summaryContainer: {
-        padding: 16,
+        padding: 18,
         borderTopWidth: 1,
         borderColor: "#eee"
     },
@@ -228,36 +246,44 @@ const styles = StyleSheet.create({
     },
 
     checkoutButton: {
-        backgroundColor: "#000",
-        padding: 14,
-        borderRadius: 8,
+        backgroundColor: "#d4af37",
+        padding: 15,
+        borderRadius: 10,
         alignItems: "center"
     },
 
     checkoutText: {
-        color: "#fff",
+        color: "#000",
         fontSize: 16,
-        fontWeight: "600"
+        fontWeight: "700"
     },
 
     emptyContainer: {
         flex: 1,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        paddingHorizontal: 40
     },
 
-    emptyText: {
-        marginTop: 10,
-        fontSize: 16,
-        color: "#666"
+    emptyTitle: {
+        marginTop: 15,
+        fontSize: 18,
+        fontWeight: "600"
+    },
+
+    emptySubtitle: {
+        fontSize: 14,
+        color: "#888",
+        marginTop: 5,
+        textAlign: "center"
     },
 
     shopButton: {
-        marginTop: 20,
+        marginTop: 25,
         backgroundColor: "#000",
-        paddingHorizontal: 20,
-        paddingVertical: 10,
-        borderRadius: 6
+        paddingHorizontal: 25,
+        paddingVertical: 12,
+        borderRadius: 8
     },
 
     shopText: {
