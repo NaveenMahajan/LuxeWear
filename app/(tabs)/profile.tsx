@@ -1,4 +1,4 @@
-import Header from '@/Components/HomeScreen/Header';
+import Header from '@/components/home/Header';
 import { COLORS, PROFILE_MENU } from '@/constants';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';

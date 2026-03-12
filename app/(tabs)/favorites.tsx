@@ -1,5 +1,5 @@
-import Header from '@/Components/HomeScreen/Header'
-import { useWishlist } from '@/Hooks/ContextApi/WishlistContext'
+import Header from '@/components/home/Header'
+import { useWishlist } from '@/hooks/ContextApi/WishlistContext'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import React from 'react'

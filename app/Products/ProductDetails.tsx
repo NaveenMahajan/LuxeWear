@@ -1,7 +1,7 @@
 import { dummyProducts } from "@/assets/assets";
 import { Product } from "@/constants/types";
-import { useCart } from "@/Hooks/ContextApi/CartContext";
-import { useWishlist } from "@/Hooks/ContextApi/WishlistContext";
+import { useCart } from "@/hooks/ContextApi/CartContext";
+import { useWishlist } from "@/hooks/ContextApi/WishlistContext";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";

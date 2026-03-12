@@ -1,5 +1,5 @@
-import Header from '@/Components/HomeScreen/Header'
-import { useCart } from '@/Hooks/ContextApi/CartContext'
+import Header from '@/components/home/Header'
+import { useCart } from '@/hooks/ContextApi/CartContext'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import React from 'react'

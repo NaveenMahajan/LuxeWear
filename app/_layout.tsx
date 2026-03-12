@@ -1,5 +1,5 @@
-import CartProvider from "@/Hooks/ContextApi/CartContext";
-import WishlistProvider from "@/Hooks/ContextApi/WishlistContext";
+import CartProvider from "@/hooks/ContextApi/CartContext";
+import WishlistProvider from "@/hooks/ContextApi/WishlistContext";
 import { Stack } from "expo-router";
 
 
