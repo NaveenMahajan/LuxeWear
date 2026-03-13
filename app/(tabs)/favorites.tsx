@@ -37,7 +37,7 @@ export default function Favorites() {
                             style={styles.card}
                             onPress={() =>
                                 router.push({
-                                    pathname: '/Products/ProductDetails',
+                                    pathname: '/products/productDetails',
                                     params: {
                                         productId: product._id
                                     }

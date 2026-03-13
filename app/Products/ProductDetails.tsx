@@ -68,7 +68,7 @@ export default function ProductDetails() {
     return (
         <View style={{ flex: 1, backgroundColor: "white" }}>
             <ScrollView>
-                {/* IMAGE SLIDER */}
+
                 <View style={styles.imageContainer}>
                     <ScrollView
                         horizontal
