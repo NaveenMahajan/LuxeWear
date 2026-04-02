@@ -1,7 +1,8 @@
 
 import { dummyProducts } from '@/assets/assets'
 import { Product } from '@/constants/types'
-import { useWishlist } from '@/hooks/ContextApi/WishlistContext'
+import { useWishlist } from '@/Hooks/ContextApi/WishlistContext'
+
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import React, { useEffect, useState } from 'react'
@@ -55,7 +56,7 @@ export default function PopularProduct() {
 
                         return (
                             <TouchableOpacity key={product._id} style={styles.productCard} onPress={() => router.push({
-                                pathname: '/products/productDetails',
+                                pathname: '/Products/ProductDetails',
                                 params: {
                                     productId: product._id
                                 }

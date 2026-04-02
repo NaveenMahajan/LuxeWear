@@ -1,5 +1,6 @@
 import Header from '@/components/home/Header'
-import { useWishlist } from '@/hooks/ContextApi/WishlistContext'
+import { useWishlist } from '@/Hooks/ContextApi/WishlistContext'
+
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import React from 'react'
@@ -37,7 +38,7 @@ export default function Favorites() {
                             style={styles.card}
                             onPress={() =>
                                 router.push({
-                                    pathname: '/products/productDetails',
+                                    pathname: '/Products/ProductDetails',
                                     params: {
                                         productId: product._id
                                     }

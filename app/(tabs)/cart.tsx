@@ -1,5 +1,5 @@
 import Header from '@/components/home/Header'
-import { useCart } from '@/hooks/ContextApi/CartContext'
+import { useCart } from '@/Hooks/ContextApi/CartContext'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import React from 'react'
@@ -145,7 +145,7 @@ export default function Cart() {
                     </Text>
 
                     <Text style={styles.emptySubtitle}>
-                        Looks like you haven't added anything yet
+                        Looks like you havent added anything yet
                     </Text>
 
                     <TouchableOpacity
