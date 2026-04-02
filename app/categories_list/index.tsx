@@ -40,7 +40,7 @@ export default function CategoriesList() {
         <TouchableOpacity
             style={styles.productCard}
             onPress={() => router.push({
-                pathname: '/products/productDetails',
+                pathname: '/Products/ProductDetails',
                 params: {
                     productId: item._id
                 }
